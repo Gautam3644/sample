@@ -1,26 +1,31 @@
-package com.lti.entity;
+package com.project.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Flights")
+@Table(name = "TBL_FLIGHTS")
 public class Flights {
 	
 	@Id
 	private int fid;
 	
 	private String airlines;
-	private int rid;
-	private String source;
-	private String destination;
 	private int capacity;
 	private int baggage;
 	
 	//one flight will have different schedules
+	@OneToOne(mappedBy = "flights")
+	private FlightSchedule flightschedule;
 	
-	
+	public FlightSchedule getFlightschedule() {
+		return flightschedule;
+	}
+	public void setFlightschedule(FlightSchedule flightschedule) {
+		this.flightschedule = flightschedule;
+	}
 	public int getFid() {
 		return fid;
 	}
@@ -32,24 +37,6 @@ public class Flights {
 	}
 	public void setAirlines(String airlines) {
 		this.airlines = airlines;
-	}
-	public int getRid() {
-		return rid;
-	}
-	public void setRid(int rid) {
-		this.rid = rid;
-	}
-	public String getSource() {
-		return source;
-	}
-	public void setSource(String source) {
-		this.source = source;
-	}
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
 	}
 	public int getCapacity() {
 		return capacity;

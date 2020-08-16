@@ -1,7 +1,9 @@
-package com.lti.entity;
+package com.project.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +16,26 @@ public class FlightSchedule {
 	private int bussprice;
 	private int availableseats;
 	
-	//schedule id
-	//flightid
+    @OneToOne
+    @JoinColumn(name="flightschedule_sid")
+    private RouteSchedule routeschedule;
 	
+    @OneToOne
+    @JoinColumn(name ="flights_fid")
+    private Flights flights;
+    
+	public Flights getFlights() {
+		return flights;
+	}
+	public void setFlights(Flights flights) {
+		this.flights = flights;
+	}
+	public RouteSchedule getRouteschedule() {
+		return routeschedule;
+	}
+	public void setRouteschedule(RouteSchedule routeschedule) {
+		this.routeschedule = routeschedule;
+	}
 	public int getFsid() {
 		return fsid;
 	}
@@ -41,8 +60,4 @@ public class FlightSchedule {
 	public void setAvailableseats(int availableseats) {
 		this.availableseats = availableseats;
 	}
-	
-
-	
-	
 }
