@@ -39,7 +39,7 @@
 
 	<servlet-mapping>
 		<servlet-name>HelloWeb</servlet-name>
-		<url-pattern>*.lti</url-pattern>
+		<url-pattern>*.req</url-pattern>
 	</servlet-mapping>
 
 </web-app>
